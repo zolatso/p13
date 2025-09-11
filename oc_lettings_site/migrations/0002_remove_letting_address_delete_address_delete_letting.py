@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.SeparateDatabaseAndState(
-            state_operations=[migrations.RemoveField(model_name='product',name='category',),],
+            state_operations=[migrations.RemoveField(model_name='letting',name='address',),],
             database_operations=[],
         ),
         migrations.SeparateDatabaseAndState(
