@@ -12,4 +12,5 @@ Pygments==2.19.2
 pytest==8.4.2
 pytest-django==3.9.0
 pytz==2025.2
+ruff==0.13.0
 sqlparse==0.5.3
