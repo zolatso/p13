@@ -1,0 +1,28 @@
+[run]
+# Include all Python files by default
+source =     
+    lettings
+    profiles
+    oc_lettings_site
+
+# Omit files/directories that shouldn’t count for coverage
+omit =
+    */tests/*
+    */migrations/*
+    */__init__.py
+    manage.py
+    
+
+[report]
+# Minimum coverage percentage to enforce
+fail_under = 80
+
+# Show missing lines in the report
+show_missing = True
+
+# Skip reporting on files that are completely excluded
+skip_covered = False
+
+[html]
+# Directory for HTML coverage report
+directory = coverage_html_report
