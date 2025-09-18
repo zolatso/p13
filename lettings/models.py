@@ -25,6 +25,7 @@ class Address(models.Model):
     Méthodes :
         __str__ : Retourne une représentation textuelle sous la forme "numéro rue".
     """
+
     number = models.PositiveIntegerField(validators=[MaxValueValidator(9999)])
     street = models.CharField(max_length=64)
     city = models.CharField(max_length=64)
@@ -40,7 +41,7 @@ class Address(models.Model):
         Exemple : "12 Rue de la Paix".
         """
         return f"{self.number} {self.street}"
-    
+
     class Meta:
         verbose_name_plural = "Addresses"
 
@@ -56,6 +57,7 @@ class Letting(models.Model):
     Méthodes :
         __str__ : Retourne le titre de la location.
     """
+
     title = models.CharField(max_length=256)
     address = models.OneToOneField(Address, on_delete=models.CASCADE)
 

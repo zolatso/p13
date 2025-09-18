@@ -11,5 +11,5 @@ def index(request):
     Retour :
         HttpResponse : Page HTML générée via le template "index.html".
     """
-    
+
     return render(request, "index.html")

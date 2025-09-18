@@ -20,6 +20,7 @@ class Profile(models.Model):
     Méthodes :
         __str__ : Retourne le nom d'utilisateur associé au profil.
     """
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     favorite_city = models.CharField(max_length=64, blank=True)
 

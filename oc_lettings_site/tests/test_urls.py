@@ -1,7 +1,8 @@
 from django.urls import reverse, resolve
-  
+
+
 def test_root_url():
-    path = reverse('index')
+    path = reverse("index")
 
     assert path == "/"
     # Resolve the path to check view name
