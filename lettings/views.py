@@ -5,10 +5,13 @@ Ce module contient :
 - index : vue listant toutes les locations disponibles.
 - letting : vue affichant le détail d’une location spécifique.
 """
+import logging
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
+from django.http import Http404
 from .models import Letting
 
+logger = logging.getLogger(__name__)
 
 def index(request):
     """
@@ -24,7 +27,14 @@ def index(request):
         HttpResponse : Page HTML générée affichant toutes les locations
         via le template "lettings/index.html".
     """
-    lettings_list = Letting.objects.all()
+    try:
+        lettings_list = Letting.objects.all()
+        if not lettings_list.exists():
+            logger.warning("No lettings exist in database")
+    except Exception as e:
+        logger.exception("Error while accessing all lettings in database.")
+        raise
+
     context = {"lettings_list": lettings_list}
     return render(request, "lettings/index.html", context)
 
@@ -45,7 +55,18 @@ def letting(request, letting_id):
         HttpResponse : Page HTML générée affichant les détails de la
         location via le template "lettings/letting.html".
     """
-    letting = get_object_or_404(Letting, id=letting_id)
+    try:
+        letting = Letting.objects.get(id=letting_id)
+    except Letting.DoesNotExist:
+        logger.warning(
+            "User tried to access a letting that does not exist. "
+            f"ID submitted = {letting_id}. Returning 404 page."
+        )
+        raise Http404("Letting not found")
+    except Exception:
+        logger.exception("Unexpected database error while fetching letting %s", letting_id)
+        raise
+
     context = {
         "title": letting.title,
         "address": letting.address,

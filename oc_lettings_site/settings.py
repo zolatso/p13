@@ -2,8 +2,48 @@ import os
 
 from pathlib import Path
 
+import sentry_sdk
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "[{levelname}] {asctime} {name}: {message}",
+            "style": "{",
+        },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
+        },
+        # send logs to Sentry
+        "sentry": {
+            "level": "WARNING",  # only send ERROR and above
+            "class": "sentry_sdk.integrations.logging.EventHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console", "sentry"],
+        "level": "INFO",
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console", "sentry"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "myapp": {
+            "handlers": ["console", "sentry"],
+            "level": "DEBUG",
+            "propagate": False,
+        },
+    },
+}
 
 
 # Quick-start development settings - unsuitable for production
@@ -11,6 +51,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s"
+
+sentry_dsn = os.environ.get("SENTRY_DSN")
+
+sentry_sdk.init(
+    dsn=sentry_dsn,
+    # Add data like request headers and IP for users,
+    # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
+    send_default_pii=True,
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
