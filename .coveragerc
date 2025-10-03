@@ -26,4 +26,4 @@ skip_covered = False
 
 [html]
 # Directory for HTML coverage report
-directory = coverage_html_report
+directory = coverage_html_report--
