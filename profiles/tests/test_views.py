@@ -45,8 +45,8 @@ def test_profile_index_view():
         first_name="Tom",
         last_name="Saunders",
     )
-    profile_1 = Profile.objects.create(user=user_1, favorite_city="London")
-    profile_2 = Profile.objects.create(user=user_2, favorite_city="Paris")
+    Profile.objects.create(user=user_1, favorite_city="London")
+    Profile.objects.create(user=user_2, favorite_city="Paris")
 
     # Reverse URL for the index view (note the namespace)
     path = reverse("profiles:index")

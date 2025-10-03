@@ -5,6 +5,7 @@ Ce module contient :
 - index : vue listant toutes les locations disponibles.
 - letting : vue affichant le détail d’une location spécifique.
 """
+
 import logging
 
 from django.shortcuts import render
@@ -12,6 +13,7 @@ from django.http import Http404
 from .models import Letting
 
 logger = logging.getLogger(__name__)
+
 
 def index(request):
     """
@@ -31,7 +33,7 @@ def index(request):
         lettings_list = Letting.objects.all()
         if not lettings_list.exists():
             logger.warning("No lettings exist in database")
-    except Exception as e:
+    except Exception:
         logger.exception("Error while accessing all lettings in database.")
         raise
 
@@ -64,7 +66,9 @@ def letting(request, letting_id):
         )
         raise Http404("Letting not found")
     except Exception:
-        logger.exception("Unexpected database error while fetching letting %s", letting_id)
+        logger.exception(
+            "Unexpected database error while fetching letting %s", letting_id
+        )
         raise
 
     context = {

@@ -5,6 +5,7 @@ Ce module contient :
 - index : vue listant tous les profils utilisateurs.
 - profile : vue affichant le détail d’un profil donné.
 """
+
 import logging
 
 from django.shortcuts import render
@@ -12,6 +13,7 @@ from django.http import Http404
 from .models import Profile
 
 logger = logging.getLogger(__name__)
+
 
 def index(request):
     """
@@ -31,7 +33,7 @@ def index(request):
         profiles_list = Profile.objects.all()
         if not profiles_list.exists():
             logger.warning("No profiles exist in database")
-    except:
+    except Exception:
         logger.exception("Something went wrong with the DB")
         raise
 
@@ -63,7 +65,9 @@ def profile(request, username):
         )
         raise Http404("Profile not found")
     except Exception:
-        logger.exception("Unexpected database error while fetching profile %s", username)
+        logger.exception(
+            "Unexpected database error while fetching profile %s", username
+        )
         raise
 
     context = {"profile": profile}

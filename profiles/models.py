@@ -15,7 +15,8 @@ class Profile(models.Model):
 
     Champs :
         user (OneToOneField) : Relation 1:1 avec le modèle User de Django.
-        favorite_city (CharField) : Ville préférée de l'utilisateur (optionnelle, max 64 caractères).
+        favorite_city (CharField) : Ville préférée de l'utilisateur
+        (optionnelle, max 64 caractères).
 
     Méthodes :
         __str__ : Retourne le nom d'utilisateur associé au profil.
