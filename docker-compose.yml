@@ -1,13 +1,11 @@
-version: "3.9"
-
 services:
   web:
-    build: .
+    image: zolatso/p13-docker
     container_name: p13-container
     env_file:
       - .env
     ports:
       - "8000:8000"
     volumes:
-      - .:/app  # mount source code for live reload
+      - .:/app  # optional, if you want live reload
       - /app/staticfiles
