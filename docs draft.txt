@@ -1,0 +1,9 @@
+Getting the latest Docker image/environment up and running:
+
+Open Docker Desktop (used for running Docker on Mac and Windows)
+
+Run docker login in the terminal (needed for pushing the image back to the repo – you may already be logged in with Docker Desktop but running this step will make sure this is the case)
+
+Run docker compose up -d in terminal from the project root
+
+This should load the image correctly. If not already on your machine it will pull it from the repo. The use of -d means that the docker container is detached from the terminal. However, if you look in Docker Desktop you will see that both the image and the container tabs now reference this image. 
