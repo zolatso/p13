@@ -1,12 +1,13 @@
 services:
   web:
+    image: zolatso/p13-image:latest
     build:
       context: ..
       dockerfile: docker/dev/Dockerfile
     env_file:
-      - .env.dev
+      - .env
     volumes:
-      - ../:/app
+      - .:/app
       - /app/staticfiles
     ports:
       - "8000:8000"

@@ -51,12 +51,10 @@ LOGGING = {
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "unsafe-secret-key-for-dev")
 
-sentry_dsn = os.environ.get("SENTRY_DSN")
+sentry_dsn = os.getenv("SENTRY_DSN")
 
 sentry_sdk.init(
     dsn=sentry_dsn,
-    # Add data like request headers and IP for users,
-    # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
     send_default_pii=True,
 )
 

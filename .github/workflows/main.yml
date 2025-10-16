@@ -11,40 +11,32 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        python-version: [3.11]
+    container:
+      image: zolatso/p13-image:latest
 
     steps:
       # Step 1: Checkout code
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Step 2: Set up Python for CI testing
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-
-      # Step 3: Install dependencies for CI (not for Docker)
+      # Step 2: Install dependencies for CI (not for Docker)
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest pytest-django coverage flake8
 
-      # Step 4: Run Django migrations for tests
-      - name: Run migrations
-        run: python manage.py migrate
+      # Step 3: Run Django migrations for tests
+      #- name: Run migrations
+      #  run: python manage.py migrate
 
-      # Step 5: Run pytest with coverage
+      # Step 4: Run pytest with coverage
       - name: Run pytest with coverage
         run: |
           coverage run -m pytest
           coverage report --fail-under=80
 
-      # Step 6: Lint code with flake8
+      # Step 5: Lint code with flake8
       - name: Lint with flake8
         run: flake8 .
 
