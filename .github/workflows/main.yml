@@ -11,13 +11,20 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    container:
-      image: zolatso/p13-image:latest
+
+    strategy: 
+      matrix: 
+        python-version: [3.11]
 
     steps:
       # Step 1: Checkout code
       - name: Checkout code
         uses: actions/checkout@v4
+      
+      - name: Set up Python 
+        uses: actions/setup-python@v4 
+        with: 
+          python-version: ${{ matrix.python-version }}
 
       # Step 2: Install dependencies for CI (not for Docker)
       - name: Install dependencies
