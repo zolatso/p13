@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html lang="[fr]" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Technologies et les langages de programmation à utiliser &#8212; Orange County Lettings 2025 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=341e49ee"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="La structure de la base de données et des modèles de données" href="db.html" />
+    <link rel="prev" title="Guide de démarrage rapide" href="demarrage_rapide.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="technologies-et-les-langages-de-programmation-a-utiliser">
+<h1>Technologies et les langages de programmation à utiliser<a class="headerlink" href="#technologies-et-les-langages-de-programmation-a-utiliser" title="Link to this heading">¶</a></h1>
+<section id="python-django">
+<h2>Python/Django<a class="headerlink" href="#python-django" title="Link to this heading">¶</a></h2>
+<p>Le framework qui se connecte à la base de données, gère le routage des URL et prépare les pages via les <em>views</em> et les <em>templates</em>.
+Django est un framework hautement évolutif qui permettra au site web de se développer à mesure que de nouvelles fonctionnalités seront ajoutées.</p>
+</section>
+<section id="sentry">
+<h2>Sentry<a class="headerlink" href="#sentry" title="Link to this heading">¶</a></h2>
+<p>Cet outil de surveillance des erreurs fournit un registre centralisé de toutes les erreurs et des problèmes rencontrés par les utilisateurs sur le site (y compris ceux que nous avons spécifiés avec la bibliothèque de journalisation de Python).
+Cela nous permet de suivre en temps réel les problèmes rencontrés par les utilisateurs et d’ajuster le site en conséquence.</p>
+</section>
+<section id="github-actions">
+<h2>GitHub Actions<a class="headerlink" href="#github-actions" title="Link to this heading">¶</a></h2>
+<p>C’est un élément clé du pipeline d’intégration et de déploiement continus (<em>CI/CD</em>).
+Chaque fois qu’un <em>commit</em> est poussé sur la branche principale, une action est déclenchée : elle configure un environnement de test, exécute les tests et applique le <em>linting</em>.
+Si tout se déroule sans problème, le site est déployé sur Render via un <em>deploy hook</em>.</p>
+<p>Si l’une des conditions suivantes se produit :
+a) les tests échouent,
+b) la couverture des tests n’atteint pas 80 %, ou
+c) le <em>linting</em> échoue,
+alors le déploiement n’a pas lieu.</p>
+</section>
+<section id="docker">
+<h2>Docker<a class="headerlink" href="#docker" title="Link to this heading">¶</a></h2>
+<p>Docker nous permet de disposer d’un environnement propre aussi bien pour le développement que pour la production.
+Une image Docker est stockée sur Docker Hub et sert à construire l’environnement Docker localement.</p>
+<p>Dans notre configuration particulière, cette image Docker n’est pas utilisée en production ; Render construit sa propre image/conteneur Docker à partir du fichier <em>Dockerfile</em> de production stocké dans le dépôt.</p>
+<p>En principe, on pourrait utiliser la même image Docker pour le développement local, les tests dans GitHub Actions et le déploiement sur Render, bien que cela n’apporte pas d’avantages particuliers pour ce projet.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Orange County Lettings</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contenu:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="description.html">Description du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Instructions d’installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demarrage_rapide.html">Guide de démarrage rapide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Technologies et les langages de programmation à utiliser</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#python-django">Python/Django</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sentry">Sentry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#github-actions">GitHub Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker">Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="db.html">La structure de la base de données et des modèles de données</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="demarrage_rapide.html" title="previous chapter">Guide de démarrage rapide</a></li>
+      <li>Next: <a href="db.html" title="next chapter">La structure de la base de données et des modèles de données</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, OpenClassrooms.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/technologies.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

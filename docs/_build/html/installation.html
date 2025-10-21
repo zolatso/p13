@@ -94,6 +94,24 @@ L’option <code class="docutils literal notranslate"><span class="pre">-d</span
 <p>Une fois le conteneur en cours d’exécution, vous pouvez le visualiser dans Docker Desktop.
 Ensuite, accédez à <code class="docutils literal notranslate"><span class="pre">http://localhost:8000</span></code> pour voir le site en fonctionnement.</p>
 </section>
+<section id="ajouter-un-tag-a-une-image-docker-et-la-pousser-sur-docker-hub">
+<h2>Ajouter un tag à une image Docker et la pousser sur Docker Hub<a class="headerlink" href="#ajouter-un-tag-a-une-image-docker-et-la-pousser-sur-docker-hub" title="Link to this heading">¶</a></h2>
+<p>Si vous avez ajouté une nouvelle dépendance dans le fichier <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> ou effectué d’autres modifications, vous pouvez ajouter un tag à l’image Docker et la pousser vers le dépôt Docker Hub.
+De cette manière, les autres membres de l’équipe pourront accéder à la version contenant les dernières modifications.</p>
+<blockquote>
+<div><p>Utilisez la commande suivante pour créer un nouveau tag associé à votre image :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>tag<span class="w"> </span>&lt;nom_image&gt;:&lt;ancien_tag&gt;<span class="w"> </span>&lt;nom_utilisateur_dockerhub&gt;/&lt;nom_image&gt;:&lt;nouveau_tag&gt;
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Pousser l’image sur Docker Hub :</strong></p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>push<span class="w"> </span>&lt;nom_utilisateur_dockerhub&gt;/&lt;nom_image&gt;:&lt;nouveau_tag&gt;
+</pre></div>
+</div>
+</div></blockquote>
+<p>L’image est maintenant disponible sur Docker Hub sous le dépôt spécifié.</p>
+</section>
 </section>
 
 
@@ -131,9 +149,12 @@ Ensuite, accédez à <code class="docutils literal notranslate"><span class="pre
 <li class="toctree-l2"><a class="reference internal" href="#lancer-le-projet">Lancer le projet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#python-venv">Python venv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#docker">Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ajouter-un-tag-a-une-image-docker-et-la-pousser-sur-docker-hub">Ajouter un tag à une image Docker et la pousser sur Docker Hub</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="demarrage_rapide.html">Guide de démarrage rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technologies.html">Technologies et les langages de programmation à utiliser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db.html">La structure de la base de données et des modèles de données</a></li>
 </ul>
 
 <div class="relations">

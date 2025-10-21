@@ -84,3 +84,24 @@ L’option ``-d`` permet d’exécuter le processus en arrière-plan (mode déta
 
 Une fois le conteneur en cours d’exécution, vous pouvez le visualiser dans Docker Desktop.  
 Ensuite, accédez à ``http://localhost:8000`` pour voir le site en fonctionnement.
+
+Ajouter un tag à une image Docker et la pousser sur Docker Hub
+--------------------------------------------------------------
+
+Si vous avez ajouté une nouvelle dépendance dans le fichier ``requirements.txt`` ou effectué d’autres modifications, vous pouvez ajouter un tag à l’image Docker et la pousser vers le dépôt Docker Hub.  
+De cette manière, les autres membres de l’équipe pourront accéder à la version contenant les dernières modifications.
+
+
+   Utilisez la commande suivante pour créer un nouveau tag associé à votre image :
+
+   .. code-block:: bash
+
+      docker tag <nom_image>:<ancien_tag> <nom_utilisateur_dockerhub>/<nom_image>:<nouveau_tag>
+
+**Pousser l’image sur Docker Hub :**
+
+   .. code-block:: bash
+
+      docker push <nom_utilisateur_dockerhub>/<nom_image>:<nouveau_tag>
+
+L’image est maintenant disponible sur Docker Hub sous le dépôt spécifié.
