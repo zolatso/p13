@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Étape 1 : Push vers la branche principale &#8212; Orange County Lettings 2025 documentation</title>
+    <title>La chaîne CI/CD pour ce projet utilise GitHub, GitHub Actions et Render. &#8212; Orange County Lettings 2025 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
     <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
@@ -14,6 +14,7 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="La structure de la base de données et des modèles de données" href="db.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -31,25 +32,27 @@
 
           <div class="body" role="main">
             
-  <p>La chaîne CI/CD pour ce projet utilise <strong>GitHub</strong>, <strong>GitHub Actions</strong> et <strong>Render</strong>.</p>
+  <section id="la-chaine-ci-cd-pour-ce-projet-utilise-github-github-actions-et-render">
+<h1>La chaîne CI/CD pour ce projet utilise <strong>GitHub</strong>, <strong>GitHub Actions</strong> et <strong>Render</strong>.<a class="headerlink" href="#la-chaine-ci-cd-pour-ce-projet-utilise-github-github-actions-et-render" title="Link to this heading">¶</a></h1>
 <section id="etape-1-push-vers-la-branche-principale">
-<h1>Étape 1 : Push vers la branche principale<a class="headerlink" href="#etape-1-push-vers-la-branche-principale" title="Link to this heading">¶</a></h1>
+<h2>Étape 1 : Push vers la branche principale<a class="headerlink" href="#etape-1-push-vers-la-branche-principale" title="Link to this heading">¶</a></h2>
 <p>À l’heure actuelle, il n’existe qu’une seule branche dans le dépôt, mais nous pourrions en ajouter d’autres à l’avenir.
 Seules les modifications apportées à la branche principale déclenchent le workflow CI/CD.
 Lorsqu’un commit est poussé sur la branche principale, l’action GitHub correspondante est déclenchée.</p>
 </section>
 <section id="etape-2-github-actions">
-<h1>Étape 2 : GitHub Actions<a class="headerlink" href="#etape-2-github-actions" title="Link to this heading">¶</a></h1>
+<h2>Étape 2 : GitHub Actions<a class="headerlink" href="#etape-2-github-actions" title="Link to this heading">¶</a></h2>
 <p>Cette étape configure un environnement de test, installe les dépendances requises depuis le fichier <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>, puis exécute les tests et le linting.
 Si les tests échouent ou si la couverture des tests n’atteint pas <strong>80 %</strong>, la compilation échoue et le site n’est pas déployé.
 Dans ce cas, vérifiez les problèmes mentionnés et corrigez-les avant de pousser à nouveau.</p>
 </section>
 <section id="etape-3-render">
-<h1>Étape 3 : Render<a class="headerlink" href="#etape-3-render" title="Link to this heading">¶</a></h1>
+<h2>Étape 3 : Render<a class="headerlink" href="#etape-3-render" title="Link to this heading">¶</a></h2>
 <p><strong>Render</strong> gère le déploiement du site en production.
 Chaque fois que <strong>GitHub Actions</strong> exécute avec succès les tests et le linting, <strong>Render</strong> est appelé via un <em>« deploy hook »</em> et démarre son propre processus de build.
 Ce processus utilise le fichier <strong>Dockerfile</strong> de production présent dans le dépôt.
 Les variables d’environnement nécessaires sont définies dans l’interface utilisateur de <strong>Render</strong>.</p>
+</section>
 </section>
 
 
@@ -79,18 +82,25 @@ Les variables d’environnement nécessaires sont définies dans l’interface u
 </search>
 <script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
 <p class="caption" role="heading"><span class="caption-text">Contenu:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="description.html">Description du projet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Instructions d’installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demarrage_rapide.html">Guide de démarrage rapide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="technologies.html">Technologies et les langages de programmation à utiliser</a></li>
 <li class="toctree-l1"><a class="reference internal" href="db.html">La structure de la base de données et des modèles de données</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">La chaîne CI/CD pour ce projet utilise <strong>GitHub</strong>, <strong>GitHub Actions</strong> et <strong>Render</strong>.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#etape-1-push-vers-la-branche-principale">Étape 1 : Push vers la branche principale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#etape-2-github-actions">Étape 2 : GitHub Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#etape-3-render">Étape 3 : Render</a></li>
+</ul>
+</li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="db.html" title="previous chapter">La structure de la base de données et des modèles de données</a></li>
   </ul></li>
 </ul>
 </div>
