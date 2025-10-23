@@ -89,7 +89,7 @@ class Migration(migrations.Migration):
                             ),
                         ),
                     ],
-                ),
+                ), 
             ],
             # Table already exists. See oc_lettings_site/migrations/0002.py
             database_operations=[],
